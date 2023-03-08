@@ -1,0 +1,27 @@
+<div class="topnav">
+  <div class="topnav__search">
+    <input type="text" placeholder="Search here...">
+    <i class="bx bx-search"></i>
+  </div>
+  <div class="topnav__right">
+    <div class="topnav__right__item">
+      <app-dropdown
+        [curr_user] = "curr_user"
+        [contentData] = "user_menu"
+      ></app-dropdown>
+    </div>
+    <div class="topnav__right__item">
+      <app-dropdown
+        icon = 'bx bx-bell'
+        badge = '12'
+        [contentData]= "notifications"
+        renderFooter = "<a href=''>View All</a>"
+      ></app-dropdown>
+    </div>
+    <div class="topnav__right__item">
+      <app-theme-menu></app-theme-menu>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,39 @@
+<div class='dropdown__theme' #dropdown_theme>
+  <button class="dropdown__toggle" (click)="setActiveMenu(theme_menu)">
+    <i class='bx bx-palette'></i>
+  </button>
+  <div class='theme-menu' #theme_menu>
+    <div class='theme-menu__title'>
+      <h4>Themes settings</h4>
+      <button class="theme-menu__title__close" (click)="closeMenu(theme_menu)">
+          <i class='bx bx-x'></i>
+      </button>
+    </div>
+    <div class='theme-menu__mode'>
+      <span>Choose mode</span>
+      <ul class="theme-menu__mode__list">
+        <li *ngFor="let item of mode_settings">
+          <div class="mode-list__color {{item.background}}">
+            <button class="mode-list__check__icon {{item.background}}">
+                <i class='bx bx-check'></i>
+            </button>
+          </div>
+          <span>{{item.name}}</span>
+        </li>
+      </ul>
+    </div>
+    <div class='theme-menu__mode'>
+      <span>Choose color</span>
+      <ul class="theme-menu__mode__mode">
+        <li *ngFor="let item of color_settings">
+          <div class="mode-list__color {{item.background}}">
+              <button class="mode-list__check__icon {{item.background}}">
+                  <i class='bx bx-check'></i>
+              </button>
+          </div>
+          <span>{{item.name}}</span>
+      </li>
+      </ul>
+    </div>
+  </div>
+</div>

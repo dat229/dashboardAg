@@ -1,0 +1,150 @@
+<div class='card table-wrapper'>
+  <div class="card__add">
+    <button (click)="addDataCustomer()" >Thêm Dữ Liệu</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let item of headData">{{item}}</th>
+      </tr>
+    </thead>
+    <tbody >
+      <ng-container *ngIf="dataTable=='topcustomer'">
+          <tr *ngFor="let item of bodyDataList">
+            <td>{{item.username}}</td>
+            <td>{{item.order}}</td>
+            <td>{{item.price}}</td>
+            <td class="table__icon table__edit"
+              (click)="editDataTopCustomer(item.username,item.order,item.price)">
+            <i class='bx bxs-edit-alt'></i>
+            </td>
+            <td class="table__icon table__delete">
+              <i class='bx bxs-trash' (click)="deleteDataCustomer(item.username,'top')" ></i>
+            </td>
+          </tr>
+      </ng-container>
+      <ng-container *ngIf="dataTable=='order'">
+        <tr *ngFor="let item of bodyDataList">
+          <td>{{item.id}}</td>
+          <td>{{item.user}}</td>
+          <td>{{item.date}}</td>
+          <td>{{item.price}}</td>
+          <td><app-badge [type]="(orderStatus[item.status])" [content] = "item.status"></app-badge></td>
+          <td class="table__icon table__edit"
+              (click)="editDataOrder(item.id,item.user,item.date,item.price,item.status)">
+            <i class='bx bxs-edit-alt'></i>
+          </td>
+            <td class="table__icon table__delete">
+            <i class='bx bxs-trash' (click)="deleteDataCustomer(item.id,'order')" ></i>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-container *ngIf="dataTable=='customer'">
+        <tr *ngFor="let item of listCustomers">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.phone}}</td>
+          <td>{{item.total_orders}}</td>
+          <td>{{item.total_spend}}</td>
+          <td>{{item.location}}</td>
+          <td class="table__icon table__edit"
+              (click)="editDataCustomer(item.id,item.name,item.email,item.phone,item.total_orders,item.total_spend,item.location)">
+            <i class='bx bxs-edit-alt'></i>
+          </td>
+          <td class="table__icon table__delete">
+            <i class='bx bxs-trash' (click)="deleteDataCustomer(item.id)" ></i>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+
+    <div #showEdit class="show__edit">
+      <div class="show__edit__header">
+        <h1>Edit</h1>
+        <i class='bx bx-x' (click)="closeShowEdit()" ></i>
+      </div>
+      <div class="show__edit__customer show__edit__content">
+        <div>
+          <label for="name">Name</label>
+          <input #customerName id="name" type="text">
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input #customerEmail id="email" type="text">
+        </div>
+        <div>
+          <label for="phone">Phone</label>
+          <input #customerPhone id="phone" type="text">
+        </div>
+        <div>
+          <label for="tatol-order">Tatol Order</label>
+          <input #customerOrder id="tatol-order" type="text">
+        </div>
+        <div>
+          <label for="tatol-spend">Total Spend</label>
+          <input #customerSpend id="tatol-spend" type="text">
+        </div>
+        <div>
+          <label for="location">Location</label>
+          <input #customerLocation id="location" type="text">
+        </div>
+      </div>
+
+      <div class="show__edit__topcustomer show__edit__content">
+        <div>
+          <label for="user-order">User</label>
+          <input #tableUser id="user-order" type="text">
+        </div>
+        <div>
+          <label for="total_orders">Total Orders</label>
+          <input #tableTotalOrders id="total_orders" type="text">
+        </div>
+        <div>
+          <label for="total-spend">Total Spending</label>
+          <input #tableTotalSpending id="total-spend" type="text">
+        </div>
+      </div>
+
+      <div class="show__edit__order show__edit__content">
+        <div>
+          <label for="order-id">Order Id</label>
+          <input #tableOrderId id="order-id" type="text">
+        </div>
+        <div>
+          <label for="user-order">User</label>
+          <input #tableUserOrders id="user-order" type="text">
+        </div>
+        <div>
+          <label for="total-price">Total Price</label>
+          <input #tableTotalPrice id="total-price" type="text">
+        </div>
+        <div>
+          <label for="date">Date</label>
+          <input #tableDate id="date" type="text">
+        </div>
+        <div>
+          <label for="status">Status</label>
+          <input #tableStatus id="status" type="text">
+        </div>
+      </div>
+
+      <div class="show__edit__button">
+        <button (click)="saveData()" >Lưu</button>
+      </div>
+
+    </div>
+  </table>
+
+  <ng-container *ngIf="pages > 1">
+    <div class="table__pagination">
+      <div *ngFor="let item of range; let i = index"
+            class="table__pagination-item {{pageMain===i+1 ? 'active' : ''}}"
+            (click)="setPagemain(item+1)"
+      >
+      {{item+1}}
+      </div>
+    </div>
+  </ng-container>
+</div>
+

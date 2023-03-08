@@ -1,0 +1,35 @@
+<div class="dropdown">
+  <button #dropdownToggle
+        class="dropdown__toggle"
+        (click)="showDropdown(dropdownToggle,dropdownContent)">
+    <ng-container *ngIf="iconDropdown" >
+      <i class={{iconDropdown}}></i>
+    </ng-container>
+    <ng-container *ngIf="badgeDropdown" >
+      <span className='dropdown__toggle__badge'>{{badgeDropdown}}</span>
+    </ng-container>
+    <ng-container *ngIf="currUserDropdown">
+      <div class="dropdown__toggle__user">
+        <div class="dropdown__toggle__user__avatar">
+          <img src={{currUserDropdown.image}} alt='avatar user' />
+        </div>
+        <div class="dropdown__toggle__user-name">{{currUserDropdown.display_name}}</div>
+      </div>
+    </ng-container>
+  </button>
+
+  <div #dropdownContent
+        class="dropdown__content">
+    <ng-container *ngIf="contentDropdown" >
+        <div class="notification-item" *ngFor="let item of contentDropdown">
+          <i class="${item.icon}"></i>
+          <span>{{item.content}}</span>
+        </div>
+    </ng-container>
+    <div class="dropdown__content__footer">
+      <ng-container *ngIf="renderFooterDropdown" >
+        <div class="" [innerHTML]="renderFooterDropdown"></div>
+      </ng-container>
+    </div>
+  </div>
+</div>

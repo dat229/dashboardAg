@@ -1,0 +1,70 @@
+<div class="dashboard">
+  <h2 class='dashboard__header' style="margin-bottom: 12px;">
+    Dashboard
+  </h2>
+  <div class='row'>
+
+    <div class='col-6'>
+      <div class='row'>
+        <div class="col-6" *ngFor="let item of statusCard" >
+          <app-status-card [itemStatusCard] = "item"></app-status-card>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-6'>
+      <div  class="card full-height">
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [xaxis]="chartOptions.options.xaxis"
+          [title]="chartOptions.title"
+          [colors]="chartOptions.options.color"
+          [dataLabels]="chartOptions.options.dataLabels"
+          [stroke]="chartOptions.options.stroke"
+          [legend]="chartOptions.options.legend"
+          [grid]="chartOptions.options.grid"
+        ></apx-chart>
+      </div>
+    </div>
+
+    <div class="col-5">
+      <div class="card">
+        <div class="card__header">
+            <h3>top customers</h3>
+        </div>
+        <div class="card__body">
+          <app-table
+            [headData] = "topCustomers.head"
+            [bodyDataList] = "topCustomers.body"
+            dataTable = "topcustomer"
+          ></app-table>
+          <div class='card__footer'>
+            <a href='/'>View All</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-7">
+      <div class="card">
+        <div class="card__header">
+            <h3>latest orders</h3>
+        </div>
+        <div class="card__body">
+          <app-table
+            [headData] = "latestOrders.head"
+            [bodyDataList] = "latestOrders.body"
+            [orderStatus] = "orderStatus"
+            dataTable = "order"
+          >
+          </app-table>
+          <div class='card__footer'>
+            <a href='/'>View All</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

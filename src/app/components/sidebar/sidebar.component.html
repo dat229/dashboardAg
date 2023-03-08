@@ -1,0 +1,25 @@
+<div class="sidebar">
+  <div class="sidebar__content">
+    <div class="sidebar__content__logo">
+      <a href="">
+        <img src={{imageLogo}} alt="">
+      </a>
+    </div>
+    <div class="sidebar__content__link">
+      <ul class="sidebar__content__link__list">
+        <!-- <li *ngFor="let item of listLink"
+            routerLinkActive="active" [routerLinkActiveOptions] = "{exact: true}"
+            class="sidebar__content__link__list__item {{currentPath === item.route ? 'active' : '' }}"> -->
+        <li *ngFor="let item of listLink"
+            routerLinkActive="active" [routerLinkActiveOptions] = "{exact: true}"
+            class="sidebar__content__link__list__item">
+          <a class="sidebar__content__link__list__item__href" routerLink={{item.route}}>
+            <i class={{item.icon}}></i>
+            <span>{{item.display_name}}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
